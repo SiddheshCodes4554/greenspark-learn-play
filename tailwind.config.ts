@@ -26,11 +26,35 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					light: 'hsl(var(--primary-light))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					light: 'hsl(var(--secondary-light))'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))',
+					light: 'hsl(var(--accent-light))'
+				},
+				success: {
+					DEFAULT: 'hsl(var(--success))',
+					foreground: 'hsl(var(--success-foreground))'
+				},
+				wind: {
+					DEFAULT: 'hsl(var(--wind))',
+					foreground: 'hsl(var(--wind-foreground))'
+				},
+				solar: {
+					DEFAULT: 'hsl(var(--solar))',
+					foreground: 'hsl(var(--solar-foreground))'
+				},
+				hydro: {
+					DEFAULT: 'hsl(var(--hydro))',
+					foreground: 'hsl(var(--hydro-foreground))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -39,10 +63,6 @@ export default {
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))'
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -62,6 +82,22 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			boxShadow: {
+				gentle: 'var(--shadow-gentle)',
+				playful: 'var(--shadow-playful)',
+				floating: 'var(--shadow-floating)',
+				glow: 'var(--shadow-glow)'
+			},
+			backgroundImage: {
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-solar': 'var(--gradient-solar)',
+				'gradient-wind': 'var(--gradient-wind)',
+				'gradient-hydro': 'var(--gradient-hydro)',
+				'gradient-eco': 'var(--gradient-eco)'
+			},
+			fontFamily: {
+				'sans': ['Poppins', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

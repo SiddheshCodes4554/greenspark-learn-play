@@ -2,39 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* GreenSpark Design System - Nature-themed, kid-friendly colors and gradients */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Background & Base Colors */
+    --background: 120 100% 97%; /* Very light green background */
+    --foreground: 220 15% 20%; /* Dark charcoal for text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card & Surface Colors */
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 220 15% 20%;
 
+    /* Popover Colors */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 15% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Vibrant Green (Main brand color) */
+    --primary: 142 76% 36%; /* Forest green */
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 142 70% 50%; /* Lighter green */
+    --primary-glow: 142 80% 60%; /* Glowing green for effects */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Sky Blue (Wind/Water energy) */
+    --secondary: 200 100% 70%; /* Bright sky blue */
+    --secondary-foreground: 220 15% 20%;
+    --secondary-light: 200 100% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Accent - Sunny Yellow (Solar energy) */
+    --accent: 45 100% 60%; /* Bright yellow */
+    --accent-foreground: 220 15% 20%;
+    --accent-light: 45 100% 80%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Success - Eco Green */
+    --success: 120 100% 40%;
+    --success-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Wind Energy - Light Blue */
+    --wind: 195 100% 75%;
+    --wind-foreground: 220 15% 20%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Solar Energy - Orange */
+    --solar: 35 100% 65%;
+    --solar-foreground: 220 15% 20%;
+
+    /* Hydro Energy - Deep Blue */
+    --hydro: 210 100% 60%;
+    --hydro-foreground: 0 0% 98%;
+
+    /* Muted Colors */
+    --muted: 120 20% 95%;
+    --muted-foreground: 220 10% 50%;
+
+    /* Destructive Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Border & Input */
+    --border: 120 30% 85%;
+    --input: 120 30% 90%;
+    --ring: 142 76% 36%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-solar: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--solar)));
+    --gradient-wind: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--wind)));
+    --gradient-hydro: linear-gradient(135deg, hsl(var(--hydro)), hsl(var(--secondary)));
+    --gradient-eco: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--success)));
+
+    /* Shadows */
+    --shadow-gentle: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-playful: 0 8px 30px hsl(var(--primary) / 0.15);
+    --shadow-floating: 0 12px 40px hsl(var(--primary) / 0.2);
+    --shadow-glow: 0 0 30px hsl(var(--primary-glow) / 0.3);
+
+    /* Animations */
+    --transition-bouncy: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -100,6 +146,110 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-light));
+  }
+}
+
+@layer components {
+  /* Hero Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground shadow-floating hover:shadow-glow transition-all duration-300 hover:scale-105;
+  }
+
+  .btn-solar {
+    @apply bg-gradient-to-r from-accent to-solar text-accent-foreground shadow-playful hover:shadow-glow transition-all duration-300 hover:scale-105;
+  }
+
+  .btn-wind {
+    @apply bg-gradient-to-r from-secondary to-wind text-secondary-foreground shadow-playful hover:shadow-glow transition-all duration-300 hover:scale-105;
+  }
+
+  .btn-hydro {
+    @apply bg-gradient-to-r from-hydro to-secondary text-hydro-foreground shadow-playful hover:shadow-glow transition-all duration-300 hover:scale-105;
+  }
+
+  /* Card Variants */
+  .card-playful {
+    @apply bg-card border-2 border-border rounded-3xl shadow-gentle hover:shadow-playful transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .card-energy {
+    @apply bg-gradient-to-br from-card to-muted border border-border rounded-2xl shadow-gentle hover:shadow-playful transition-all duration-300;
+  }
+
+  /* Floating Animation */
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse Glow Animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary-glow) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary-glow) / 0.6); }
+  }
+
+  /* Bounce Animation */
+  .bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce-gentle {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+
+  /* Gradient Text */
+  .text-gradient-hero {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-solar {
+    background: var(--gradient-solar);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Interactive Elements */
+  .interactive-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-playful cursor-pointer;
+  }
+
+  /* Progress Ring Animation */
+  .progress-ring {
+    transition: stroke-dasharray 0.5s ease-in-out;
   }
 }
